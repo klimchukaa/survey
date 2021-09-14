@@ -7,9 +7,9 @@ signed main() {
     string name; cin >> name;
     cout << "Your surname: ";
     string surname; cin >> surname;
-    cout << "Your favourite movie: ";
+    cout << "Book you recommend reading: ";
     string emp; getline(cin, emp);
-    string movie; getline(cin, movie);
+    string book; getline(cin, book);
     ofstream f; f.open("C:\\Users\\Alexander\\Desktop\\survey\\results.txt", ios::app);
-    f << name << ' ' << surname << ' ' << movie << "\n";
+    f << name << ' ' << surname << ' ' << book << "\n";
 }
