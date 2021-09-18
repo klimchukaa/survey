@@ -4,9 +4,26 @@ using namespace std;
 
 void get_results() {
     ifstream in; in.open("results.txt");
-    string inf;
+    vector < vector <string> > res;
+    string inf; int ind = 0; int l = 0;
     while (getline(in, inf)) {
-        cout << inf << "\n";
+        if (l == ind) {
+            res.push_back(vector <string> ());
+            l++;
+        }
+        if (inf == "end_user") {
+            swap(res[ind][0], res[ind][1]);
+            ind++;
+        } else if (inf != "") {
+            res[ind].push_back(inf);
+        }
+    }
+    sort(res.begin(), res.end());
+    for (auto user : res) {
+        for (auto information : user) {
+            cout << information << "\n";
+        }
+        cout << "\n";
     }
 }
 
@@ -29,5 +46,5 @@ signed main() {
     for (auto ans : answers) {
         f << ans << "\n";
     }
-    f << "\n";
+    f << "end_user\n\n";
 }
