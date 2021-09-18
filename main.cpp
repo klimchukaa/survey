@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void get_results() {
+void get_results(int k) {
     ifstream in; in.open("results.txt");
     vector < vector <string> > res;
     string inf; int ind = 0; int l = 0;
@@ -13,15 +13,18 @@ void get_results() {
             l++;
         }
         if (inf == "end_user") {
-            swap(res[ind][0], res[ind][1]);
+            swap(res[ind][0], res[ind][k - 1]);
             books.insert(res[ind][2]);
             ind++;
         } else if (inf != "") {
             res[ind].push_back(inf);
         }
     }
+    res.pop_back();
     sort(res.begin(), res.end());
-    for (auto user : res) {
+    for (int i = 0; i < ind; ++i) {
+        swap(res[i][0], res[i][k - 1]);
+        auto user = res[i];
         for (auto information : user) {
             cout << information << "\n";
         }
@@ -34,7 +37,9 @@ signed main() {
     cout << "What do you need? ";
     string need; getline(cin, need);
     if (need == "results") {
-        get_results();
+        cout << "What cell in your priority? ";
+        int k; cin >> k;
+        get_results(k);
         return 0;
     }
     ifstream in; in.open("questions.txt");
