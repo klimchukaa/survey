@@ -1,3 +1,3 @@
-What's your name? 
-What's your surname? 
-Would you recommend a book? 
+What's your name:
+What's your surname:
+What's your favorite book:
