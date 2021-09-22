@@ -4,6 +4,12 @@
 
 using namespace std;
 
+
+void set_asks() {
+
+}
+
+
 void get_results(int k) {
     ifstream in; in.open("results.txt");
     vector < vector <string> > res;
@@ -35,15 +41,8 @@ void get_results(int k) {
     cout << "People: " << ind << ' ' << "Different books" << ' ' << books.size() << "\n";
 }
 
-signed main() {
-    cout << "What do you need? ";
-    string need; getline(cin, need);
-    if (need == "results") {
-        cout << "What cell in your priority? ";
-        int k; cin >> k;
-        get_results(k);
-        return 0;
-    }
+
+void new_user() {
     ifstream in; in.open("questions.txt");
     vector <string> answers;
     string q; string an;
@@ -57,4 +56,19 @@ signed main() {
         f << ans << "\n";
     }
     f << "end_user\n\n";
+}
+
+
+signed main() {
+    cout << "What do you need? (results/set_asks/new_user) ";
+    string need; getline(cin, need);
+    if (need == "results") {
+        cout << "What cell in your priority? ";
+        int k; cin >> k;
+        get_results(k);
+        return 0;
+    }
+    else{
+        new_user();
+    }
 }
