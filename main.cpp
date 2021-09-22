@@ -5,8 +5,21 @@
 using namespace std;
 
 
-void set_asks() {
+void get_questions_from_file(vector<string>& res) {
+    res.clear();
+    ifstream in;
+    in.open("questions.txt");
+    string q; string an;
+    while (getline(in, q)) {
+        res.push_back(q);
+    }
+}
 
+
+void set_questions() {
+    vector<string> questions;
+    vector<string> old_questions;
+    get_questions_from_file(old_questions);
 }
 
 
@@ -38,15 +51,16 @@ void get_results(int k) {
         }
         cout << "\n";
     }
-    cout << "People: " << ind << ' ' << "Different books" << ' ' << books.size() << "\n";
+    cout << "People: " << ind << ' ' << "Different books:" << ' ' << books.size() << "\n";
 }
 
 
 void new_user() {
-    ifstream in; in.open("questions.txt");
+    vector<string> questions;
+    get_questions_from_file(questions);
     vector <string> answers;
     string q; string an;
-    while (getline(in, q)) {
+    for(auto &q: questions) {
         cout << q << ' ';
         getline(cin, an);
         answers.push_back(an);
@@ -56,11 +70,12 @@ void new_user() {
         f << ans << "\n";
     }
     f << "end_user\n\n";
+    f.close();
 }
 
 
 signed main() {
-    cout << "What do you need? (results/set_asks/new_user) ";
+    cout << "What do you need? (results/set_questions/new_user) ";
     string need; getline(cin, need);
     if (need == "results") {
         cout << "What cell in your priority? ";
