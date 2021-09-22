@@ -1,3 +1,5 @@
+#include <iostream>
+#incldue <vector>
 #include <bits/stdc++.h>
 
 using namespace std;
