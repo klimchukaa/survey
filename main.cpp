@@ -20,6 +20,25 @@ void set_questions() {
     vector<string> questions;
     vector<string> old_questions;
     get_questions_from_file(old_questions);
+    cout << "Old questions was: " << "\n";
+    for (auto& q : old_questions) {
+        cout << "\t" << q << "\n";
+    }
+    cout << "How many questions? : ";
+    int n;
+    string sn;
+    getline(cin, sn);
+    n = stoi(sn);
+    ofstream qfile;
+    qfile.open("questions.txt");
+    for (int i = 0; i < n; ++i) {
+        string q;
+        getline(cin, q);
+        qfile << q << "\n";
+    }
+    qfile.close();
+    ofstream f; f.open("results.txt");
+    f.close();
 }
 
 
@@ -82,6 +101,9 @@ signed main() {
         int k; cin >> k;
         get_results(k);
         return 0;
+    }
+    else if (need == "set_questions") {
+        set_questions();
     }
     else{
         new_user();
