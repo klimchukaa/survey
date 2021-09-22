@@ -6,7 +6,6 @@ void get_results(int k) {
     ifstream in; in.open("results.txt");
     vector < vector <string> > res;
     string inf; int ind = 0; int l = 0;
-    set <string> books;
     while (getline(in, inf)) {
         if (l == ind) {
             res.push_back(vector <string> ());
@@ -14,7 +13,6 @@ void get_results(int k) {
         }
         if (inf == "end_user") {
             swap(res[ind][0], res[ind][k - 1]);
-            books.insert(res[ind][2]);
             ind++;
         } else if (inf != "") {
             res[ind].push_back(inf);
@@ -30,7 +28,7 @@ void get_results(int k) {
         }
         cout << "\n";
     }
-    cout << "People: " << ind << ' ' << "Different books" << ' ' << books.size() << "\n";
+    cout << "People: " << ind << "\n";
 }
 
 signed main() {
