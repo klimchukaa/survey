@@ -1,2 +1,2 @@
 This is a short survey.
-Enter your name, surname and a book you recommend reading.
+You can change questions, pass the survey or get results.
